@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-hyped-cream: #e8eddf;
+  --color-hyped-sage: #cfdbd5;
+  --color-hyped-gold: #f5cb5c;
+  --color-hyped-dark: #242423;
+  --color-hyped-charcoal: #333533;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 40s linear infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-hyped-charcoal/20;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-hyped-dark text-hyped-cream font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-hyped-gold text-hyped-dark;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-hyped-gold via-hyped-cream to-hyped-gold bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-hyped-charcoal/40 backdrop-blur-xl border border-hyped-sage/10;
+  }
+}
